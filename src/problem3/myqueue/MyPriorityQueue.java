@@ -14,7 +14,7 @@ public class MyPriorityQueue {
     private int size;
 
     //Constructor
-    MyPriorityQueue(){
+    public MyPriorityQueue(){
         front=null;
         rear=null;
         size=0;
@@ -52,6 +52,7 @@ public class MyPriorityQueue {
         Node node=new Node(data);
         if(front==null){
             front=node;
+            rear=node;
             size++;
             System.out.println("Value Entered successfully!");
         }
@@ -66,18 +67,21 @@ public class MyPriorityQueue {
             rear.setNext(node);
             rear=node;
             System.out.println("Value Entered successfully!");
+            size++;
         }
         else {
-            Node previous=null;
             Node temp = front;
+            Node previous=temp;
             while(temp.getNext().getNext()!=null){
-                previous=temp;
+
                 if(data<=temp.getData()){
                     previous.setNext(node);
                     node.setNext(temp);
                     size++;
                     System.out.println("Value Entered successfully!");
+                    break;
                 }
+                previous=temp;
                 temp=temp.getNext();
             }
         }
@@ -85,10 +89,22 @@ public class MyPriorityQueue {
 
     //traversing
     public void traversing(){
-        Node temp=front;
-        while(temp.getNext()!=null){
-            System.out.print(temp.getData()+" ");
-            temp=temp.getNext();
+        if(front!=null) {
+            Node temp = front;
+            int temp1=size;
+            while (temp1!=0) {
+                System.out.print(temp.getData() + " ");
+                temp = temp.getNext();
+                temp1--;
+            }
+            System.out.println();
         }
+        else {
+            System.out.println("sorry! Queue is empty.");
+        }
+    }
+
+    public int getSize() {
+        return size;
     }
 }
