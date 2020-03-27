@@ -32,5 +32,6 @@ public class MyMain {
             System.out.print("For inserting data in BST press1, for printing left nodes and nodes which who doesn't have left child press2, for exit press0:- ");
             counter = sc.nextInt();
         }
+        System.out.println("Thank you. Have a nice day!");
     }
 }
